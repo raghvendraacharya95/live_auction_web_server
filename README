@@ -1,0 +1,47 @@
+##Author Raghvendra Acharya
+##Date 2019-01-06
+
+A Flask based Web Socket server
+
+Description
+
+A Python-Flask based web socket server for real time online bidding system based on publisher subscriber model.
+
+Assumptions
+	1. Products to bed auctioned are given.
+
+
+Tehnology:
+
+	Databases:
+
+	1. Redis - to publish events like new bidder addition, to get real time maximum price, if price changes etc.
+
+	2. Mysql - To store transactional data like live bidding, user details, item availbility.
+
+	3. Python-Flask - For create websocket server.
+
+
+Setup:
+	
+	Setup tested on Ubuntu 18.04(Work fine for all version).
+	
+	1.Install python virtual enviroment using "sudo apt install virtualenv".
+
+	2.Create virtual environment(In same directory where clone of this project taken) using "virtualenv name_of_your_enviroment"(eg: virtaulenv env).
+	
+	3.Please make sure your virtualenv has python2.7 if not then install python2.7 in your virtualenv using pip command of your virtaulenv.
+	
+	4.Change your directory to web_crawler_apis and install requirements.tx using your pip command of virtaulenv
+	(eg: $../env/bin/pip install -r requirements.txt).
+
+
+Run:
+	
+	1.There are 4 python file and to run.
+		a). web_socket_server
+		b). new_bid.py
+		c). price_checker.py
+		d). buyer_finder.py
+
+	websocket should be run on port 8082
