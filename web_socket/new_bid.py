@@ -10,25 +10,22 @@ from datetime import datetime,timedelta
 
 
 def get_last_order_id():
-	objEventDB=event_db.EventDB()	
-	redis_key = objEventDB.get_redis_key("latest_order")
-	order_id = objEventDB.redis_client.get(redis_key)
 	last_order_id = tran_db.get_last_order_id()
 	if last_order_id:
 		return last_order_id
 	else:
 		return 0
 
-def set_last_order_id(new_last_order_id):
-	objEventDB=event_db.EventDB()	
-	redis_key = objEventDB.get_redis_key("latest_order")
-	order_id = objEventDB.redis_client.get(redis_key)
+# def set_last_order_id(new_last_order_id):
+# 	objEventDB=event_db.EventDB()	
+# 	redis_key = objEventDB.get_redis_key("latest_order")
+# 	order_id = objEventDB.redis_client.get(redis_key)
 	
-	if order_id:
-		if int(order_id)>new_last_order_id:
-			new_last_order_id=int(booking_id)
-	if new_last_order_id:
-		objEventDB.redis_client.set(redis_key,str(new_last_order_id))
+# 	if order_id:
+# 		if int(order_id)>new_last_order_id:
+# 			new_last_order_id=int(order_id)
+# 	if new_last_order_id:
+		# objEventDB.redis_client.set(redis_key,str(new_last_order_id))
 
 def set_all_live_items(all_live_items):
 	objEventDB=event_db.EventDB()	
@@ -66,7 +63,7 @@ def process_new_orders(result):
 	#objEventDB.redis_client.mset(dict_order_details)
 	if 0 in orders:
 		orders.remove(0)
-	set_last_order_id(new_last_order_id)
+	# set_last_order_id(new_last_order_id)
 	# set_all_live_items((all_live_items))
 	with objEventDB.redis_client.pipeline() as pipe:
 		for auction_id,str_item in dict_order_details.iteritems():
