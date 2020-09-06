@@ -7,7 +7,7 @@ import os
 import ConfigParser
 
 CONFIG_FILE = "sql.ini"
-DEFAULT_DB_POOL_SIZE = 2
+DEFAULT_DB_POOL_SIZE = 3
 
 def get_mysql_db_engine(server_name,refresh=False):
 	config = ConfigParser.ConfigParser()
